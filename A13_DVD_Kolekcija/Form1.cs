@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace A13_DVD_Kolekcija
 {
     public partial class Form1 : Form
     {
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ucenik\Desktop\A13_DVD_Kolekcija\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        OleDbConnection conn;
+        OleDbCommand command;
+        List<Producent> producentiList;
+
         public Form1()
         {
             InitializeComponent();
@@ -19,46 +25,76 @@ namespace A13_DVD_Kolekcija
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tabControl1.ImageList = imageList1;
+            try
+            {
+                producentiList = new List<Producent>();
+                DataSet ds = new DataSet();
+                conn = new OleDbConnection(CONNSTRING);
+                command = new OleDbCommand();
+                command.Connection = conn;
+                command.CommandText = "SELECT * FROM Producent";
+
+                conn.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Producent producent = new Producent(Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString());
+                    producentiList.Add(producent);
+                    listBox1.Items.Add(producent.ToString());
+                }
+                FillTextBoxes(producentiList[0]);
+            }catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message); 
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Graphics g = e.Graphics;
-            Brush _textBrush;
+            Producent producent = producentiList[listBox1.SelectedIndex];
+            FillTextBoxes(producent);
+        }
 
-            // Get the item from the collection.
-            TabPage _tabPage = tabControl1.TabPages[e.Index];
+        private void FillTextBoxes(Producent producent)
+        {
+            textBox1.Text = producent.Id.ToString();
+            textBox2.Text = producent.Naziv;
+            textBox3.Text = producent.Email;
+        }
 
-            // Get the real bounds for the tab rectangle.
-            Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
-            if (e.State == DrawItemState.Selected)
+        private void izmeni_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "clicked";
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            try
             {
-
-                // Draw a different background color, and don't paint a focus rectangle.
-                _textBrush = new SolidBrush(Color.Black);
-                //g.FillRectangle(Brushes.Gray, e.Bounds);
+                producentiList = new List<Producent>();
+                DataSet ds = new DataSet();
+                conn = new OleDbConnection(CONNSTRING);
+                command = new OleDbCommand();
+                command.Connection = conn;
+                command.CommandText = "UPDATE Producent SET Ime='"+ textBox2.Text.Trim() +"', Email='"+textBox3.Text.Trim()+"' WHERE ProducentID = " + textBox1.Text.Trim();
+                // refrest listbox
+                conn.Open();
+                command.ExecuteNonQuery();
+                MessageBox.Show("Uspesno sacuvano");
             }
-            else
+            catch (Exception exc)
             {
-                _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
-                e.DrawBackground();
+                MessageBox.Show(exc.Message);
             }
-
-            // Use our own font.
-            Font _tabFont = new Font("Arial", 10.0f, FontStyle.Bold, GraphicsUnit.Pixel);
-
-            // Draw string. Center the text.
-            StringFormat _stringFlags = new StringFormat();
-            _stringFlags.Alignment = StringAlignment.Center;
-            _stringFlags.LineAlignment = StringAlignment.Center;
-            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
-
-            Rectangle tabImage = tabControl1.GetTabRect(e.Index);
-            tabImage.X = 30;
-            tabImage.Size = new Size(32, 32);
-
-            g.DrawImage(tabControl1.ImageList.Images[_tabPage.ImageIndex], tabImage);
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }
