@@ -13,7 +13,7 @@ namespace A13_DVD_Kolekcija
 {
     public partial class Analiza : Form
     {
-        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
         OleDbConnection conn;
         OleDbCommand command;
         List<Producent> producentiList;
@@ -29,16 +29,34 @@ namespace A13_DVD_Kolekcija
 
         private void button2_Click(object sender, EventArgs e)
         {
-            producentiList = new List<Producent>();
-            DataSet ds = new DataSet();
-            conn = new OleDbConnection(CONNSTRING);
+            dataGridView1.AllowUserToAddRows = false;
+            try
+            {
+                producentiList = new List<Producent>();
+                DataSet ds = new DataSet();
+                conn = new OleDbConnection(CONNSTRING);
+                OleDbDataAdapter adapter; //no idea how to do this sql query
 
-            OleDbDataAdapter adapter = new OleDbDataAdapter(); //no idea how to do this sql query
-            conn.Open();
-            OleDbDataReader reader = command.ExecuteReader();
-            adapter.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
+                conn.Open();
+                command = new OleDbCommand("SELECT Producent.Ime as [Producent], COUNT(Film.FilmID) as [Broj Filmova] FROM (Producent INNER JOIN Producirao ON Producirao.ProducentID = Producent.ProducentID) INNER JOIN Film ON Film.FilmID = Producirao.FilmID GROUP BY Producent.Ime;", conn);
+                //OleDbDataReader reader = command.ExecuteReader();
+                adapter = new OleDbDataAdapter(command);
+                adapter.Fill(ds);
 
+                DataTable dt = ds.Tables[0];
+                DataView dv = new DataView(dt);
+                chart1.Series[0].Points.DataBind(dv, "Producent", "Broj Filmova", "");
+
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

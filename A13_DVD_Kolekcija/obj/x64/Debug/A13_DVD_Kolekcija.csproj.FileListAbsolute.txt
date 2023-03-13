@@ -11,3 +11,16 @@ C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A1
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.exe
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.pdb
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.Analiza.resources
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\bin\x64\Debug\data\DVD-kolekcija.accdb
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\bin\x64\Debug\A13_DVD_Kolekcija.exe.config
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\bin\x64\Debug\A13_DVD_Kolekcija.exe
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\bin\x64\Debug\A13_DVD_Kolekcija.pdb
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.csproj.AssemblyReference.cache
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.csproj.SuggestedBindingRedirects.cache
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.Analiza.resources
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.Form1.resources
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.Properties.Resources.resources
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.csproj.GenerateResource.cache
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.csproj.CoreCompileInputs.cache
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.exe
+D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\obj\x64\Debug\A13_DVD_Kolekcija.pdb
