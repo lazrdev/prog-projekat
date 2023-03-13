@@ -13,7 +13,7 @@ namespace A13_DVD_Kolekcija
 {
     public partial class Form1 : Form
     {
-        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ucenik\Desktop\A13_DVD_Kolekcija\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
         OleDbConnection conn;
         OleDbCommand command;
         List<Producent> producentiList;
@@ -23,10 +23,11 @@ namespace A13_DVD_Kolekcija
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void RefreshList()
         {
             try
             {
+                listBox1.Items.Clear();
                 producentiList = new List<Producent>();
                 DataSet ds = new DataSet();
                 conn = new OleDbConnection(CONNSTRING);
@@ -44,14 +45,20 @@ namespace A13_DVD_Kolekcija
                     listBox1.Items.Add(producent.ToString());
                 }
                 FillTextBoxes(producentiList[0]);
-            }catch(Exception exc)
+            }
+            catch (Exception exc)
             {
-                MessageBox.Show(exc.Message); 
+                MessageBox.Show(exc.Message);
             }
             finally
             {
                 conn.Close();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            RefreshList(); //first list load
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,29 +79,39 @@ namespace A13_DVD_Kolekcija
             textBox1.Text = "clicked";
         }
 
-        private void tabControl1_Click(object sender, EventArgs e)
+
+        //saves when analiza is clicked, not on other tabs
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            try
-            {
-                producentiList = new List<Producent>();
-                DataSet ds = new DataSet();
-                conn = new OleDbConnection(CONNSTRING);
-                command = new OleDbCommand();
-                command.Connection = conn;
-                command.CommandText = "UPDATE Producent SET Ime='"+ textBox2.Text.Trim() +"', Email='"+textBox3.Text.Trim()+"' WHERE ProducentID = " + textBox1.Text.Trim();
-                // refrest listbox
-                conn.Open();
-                command.ExecuteNonQuery();
-                MessageBox.Show("Uspesno sacuvano");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            if (tabControl1.SelectedIndex == 1)
+                try
+                { //save the modified values
+                    producentiList = new List<Producent>();
+                    DataSet ds = new DataSet();
+                    conn = new OleDbConnection(CONNSTRING);
+                    command = new OleDbCommand();
+                    command.Connection = conn;
+                    command.CommandText = "UPDATE Producent SET Ime='" + textBox2.Text.Trim() + "', Email='" + textBox3.Text.Trim() + "' WHERE ProducentID = " + textBox1.Text.Trim();
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Uspesno sacuvano");
+                    //open new form
+                    Analiza a = new Analiza();
+                    //go back to first tab
+                    tabControl1.SelectedIndex = 0;
+                    //show analiza
+                    a.Show();
+                    
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            if (tabControl1.SelectedIndex == 0) RefreshList(); //reload of list
         }
     }
 }
