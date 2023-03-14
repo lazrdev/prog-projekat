@@ -13,7 +13,7 @@ namespace A13_DVD_Kolekcija
 {
     public partial class Form1 : Form
     {
-        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
         OleDbConnection conn;
         OleDbCommand command;
         List<Producent> producentiList;
@@ -83,7 +83,7 @@ namespace A13_DVD_Kolekcija
         //saves when analiza is clicked, not on other tabs
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            if (tabControl1.SelectedIndex == 1)
+            if (tabControl1.SelectedIndex == 0)
                 try
                 { //save the modified values
                     producentiList = new List<Producent>();
@@ -95,11 +95,7 @@ namespace A13_DVD_Kolekcija
                     conn.Open();
                     command.ExecuteNonQuery();
                     MessageBox.Show("Uspesno sacuvano");
-                    Analiza a = new Analiza();
-                    //go back to first tab
-                    tabControl1.SelectedIndex = 0;
-                    //show analiza
-                    a.Show();
+                    
                 }
                 catch (Exception exc)
                 {
@@ -108,8 +104,16 @@ namespace A13_DVD_Kolekcija
                 finally
                 {
                     conn.Close();
+                    RefreshList();
                 }
-            if (tabControl1.SelectedIndex == 0) RefreshList(); //reload of list
+            if(tabControl1.SelectedIndex == 1)
+            {
+                Analiza a = new Analiza();
+                //go back to first tab
+                tabControl1.SelectedIndex = 0;
+                //show analiza
+                a.Show();
+            }
             if (tabControl1.SelectedIndex == 3) this.Close();
         }
     }
