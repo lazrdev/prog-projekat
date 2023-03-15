@@ -55,3 +55,15 @@ C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DV
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.csproj.CoreCompileInputs.cache
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.exe
 C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.pdb
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\bin\Debug\data\DVD-kolekcija.accdb
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\bin\Debug\A13_DVD_Kolekcija.exe.config
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\bin\Debug\A13_DVD_Kolekcija.exe
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\bin\Debug\A13_DVD_Kolekcija.pdb
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.csproj.AssemblyReference.cache
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.Analiza.resources
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.Form1.resources
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.Properties.Resources.resources
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.csproj.GenerateResource.cache
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.csproj.CoreCompileInputs.cache
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.exe
+C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\obj\Debug\A13_DVD_Kolekcija.pdb

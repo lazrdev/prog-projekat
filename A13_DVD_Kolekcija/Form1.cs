@@ -13,7 +13,7 @@ namespace A13_DVD_Kolekcija
 {
     public partial class Form1 : Form
     {
-        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\lazar\Documents\GitHub\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
         OleDbConnection conn;
         OleDbCommand command;
         List<Producent> producentiList;
@@ -74,16 +74,23 @@ namespace A13_DVD_Kolekcija
             textBox3.Text = producent.Email;
         }
 
-        private void izmeni_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "clicked";
+            this.Close();
         }
 
-
-        //saves when analiza is clicked, not on other tabs
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        private void analizaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
+            Analiza a = new Analiza();
+            //show analiza
+            a.Show();
+        }
+
+        private void izmeniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            groupBox2.Visible = true;
+           
                 try
                 { //save the modified values
                     producentiList = new List<Producent>();
@@ -95,7 +102,7 @@ namespace A13_DVD_Kolekcija
                     conn.Open();
                     command.ExecuteNonQuery();
                     MessageBox.Show("Uspesno sacuvano");
-                    
+
                 }
                 catch (Exception exc)
                 {
@@ -106,15 +113,13 @@ namespace A13_DVD_Kolekcija
                     conn.Close();
                     RefreshList();
                 }
-            if(tabControl1.SelectedIndex == 1)
-            {
-                Analiza a = new Analiza();
-                //go back to first tab
-                tabControl1.SelectedIndex = 0;
-                //show analiza
-                a.Show();
             }
-            if (tabControl1.SelectedIndex == 3) this.Close();
+        
+
+        private void oAplikacijiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = true;
+            groupBox2.Visible = false;
         }
     }
 }

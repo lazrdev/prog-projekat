@@ -13,7 +13,7 @@ namespace A13_DVD_Kolekcija
 {
     public partial class Analiza : Form
     {
-        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\_skola\prog\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
+        private const string CONNSTRING = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ucenik.DESKTOP-RO75DVM\Downloads\prog-projekat\prog-projekat\A13_DVD_Kolekcija\data\DVD-kolekcija.accdb;Persist Security Info=True";
         OleDbConnection conn;
         OleDbCommand command;
         List<Producent> producentiList;

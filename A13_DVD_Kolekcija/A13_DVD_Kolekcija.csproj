@@ -96,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,6 +115,10 @@
     <Content Include="data\DVD-kolekcija.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Screenshot 2023-03-15 084848.png" />
+    <None Include="Resources\Screenshot 2023-03-15 084819.png" />
+    <None Include="Resources\Screenshot 2023-03-15 084748.png" />
+    <None Include="Resources\Screenshot 2023-03-15 084626.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
